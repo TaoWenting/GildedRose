@@ -24,7 +24,7 @@ public class GildedRoseTest {
 	public void testUpdateEndOfDay_AgedBrie_Quality_10_11() {
 		// Arrange
 		GildedRose store = new GildedRose();
-		store.addItem(new Item("Aged Brie", 2, 10) );
+		store.addItem(new Item("Aged Brie", 2, 0) );
 		
 		// Act
 		store.updateEndOfDay();
@@ -32,8 +32,84 @@ public class GildedRoseTest {
 		// Assert
 		List<Item> items = store.getItems();
 		Item itemBrie = items.get(0);
-		assertEquals(11, itemBrie.getQuality());
+		assertEquals(1, itemBrie.getQuality());
 	}
+	
+	@Test
+	public void testUpdateEndOfDay_Dexterity_Vest() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("+5 Dexterity Vest", 10, 20) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemDexterity_Vest = items.get(0);
+		assertEquals(19, itemDexterity_Vest.getQuality());
+	}
+	
+	@Test
+	public void testUpdateEndOfDay_Elixir_of_the_Mongoose() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Elixir of the Mongoose", 5, 7) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemMongoose = items.get(0);
+		assertEquals(6, itemMongoose.getQuality());
+	}
+	
+	@Test
+	public void testUpdateEndOfDay_Sulfuras_Hand_of_Ragnaros() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemSulfuras = items.get(0);
+		assertEquals(80, itemSulfuras.getQuality());
+	}
+	
+	@Test
+	public void testUpdateEndOfDay_Backstage_passes_to_a_TAFKAL80ETC_concert() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemBackstage = items.get(0);
+		assertEquals(21, itemBackstage.getQuality());
+	}
+	
+	@Test
+	public void testUpdateEndOfDayConjured_Mana_Cake_concert() {
+		// Arrange
+		GildedRose store = new GildedRose();
+		store.addItem(new Item("Conjured Mana Cake", 3, 6) );
+		
+		// Act
+		store.updateEndOfDay();
+		
+		// Assert
+		List<Item> items = store.getItems();
+		Item itemCake = items.get(0);
+		assertEquals(5, itemCake.getQuality());
+	}
+	
     
 	@Test
 	public void testUpdateEndOfDay() {
